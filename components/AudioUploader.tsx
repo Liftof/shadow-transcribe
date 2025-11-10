@@ -31,7 +31,7 @@ export default function AudioUploader({ onTranscriptionComplete, isProcessing, s
       // Appeler l'API
       const response = await fetch('/api/transcribe', {
         method: 'POST',
-        body: file, // On envoie le fichier brut pour l'instant
+        body: formData,
       })
 
       const data = await response.json()
