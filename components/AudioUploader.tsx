@@ -95,7 +95,7 @@ export default function AudioUploader({ onTranscriptionComplete, isProcessing, s
               </p>
             </div>
             <div className="inline-block px-6 py-3 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-600 transition-colors">
-              Essayer maintenant (gratuit jusqu'à 1 min)
+              Essayer maintenant (100% gratuit)
             </div>
           </div>
         ) : (
@@ -129,8 +129,7 @@ export default function AudioUploader({ onTranscriptionComplete, isProcessing, s
       {/* Info Box */}
       <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500 rounded-lg">
         <p className="text-blue-300 text-sm">
-          <span className="font-semibold">Version gratuite :</span> Fichiers audio jusqu'à 1 minute.
-          Pour des fichiers plus longs, contactez-nous.
+          <span className="font-semibold">Service 100% gratuit</span> - Transcription et résumé de vos fichiers audio en quelques secondes.
         </p>
       </div>
     </div>

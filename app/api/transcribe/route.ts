@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
 
 // Configuration
-const FREE_TIER_LIMIT_SECONDS = 60
 const MAX_FILE_SIZE = 25 * 1024 * 1024 // 25MB - Whisper API limit
 
 // Initialize OpenAI client
