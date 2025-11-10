@@ -9,8 +9,5 @@
       "maxDuration": 60
     }
   },
-  "env": {
-    "OPENAI_API_KEY": "@openai-api-key"
-  },
   "regions": ["iad1"]
 }
