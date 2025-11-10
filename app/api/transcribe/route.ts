@@ -84,6 +84,16 @@ Format souhaité:
 
 export async function POST(request: NextRequest) {
   try {
+    // Check Content-Type
+    const contentType = request.headers.get('content-type') || ''
+
+    if (!contentType.includes('multipart/form-data')) {
+      return NextResponse.json(
+        { error: 'Content-Type doit être multipart/form-data' },
+        { status: 400 }
+      )
+    }
+
     // Get the form data
     const formData = await request.formData()
     const file = formData.get('audio') as File | null
@@ -103,11 +113,13 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Check file type
-    const allowedTypes = ['audio/mpeg', 'audio/mp3', 'audio/wav', 'audio/m4a', 'audio/ogg', 'audio/flac', 'audio/aac', 'audio/x-m4a']
-    if (!allowedTypes.some(type => file.type.includes(type.split('/')[1]))) {
+    // Check file type based on extension (more reliable than MIME type)
+    const allowedExtensions = ['.mp3', '.wav', '.m4a', '.ogg', '.flac', '.aac', '.mp4', '.mpeg', '.mpga', '.webm']
+    const fileExtension = file.name.toLowerCase().substring(file.name.lastIndexOf('.'))
+
+    if (!allowedExtensions.includes(fileExtension)) {
       return NextResponse.json(
-        { error: `Format de fichier non supporté: ${file.type}. Formats acceptés: MP3, WAV, M4A, OGG, FLAC, AAC` },
+        { error: `Format de fichier non supporté: ${fileExtension}. Formats acceptés: MP3, WAV, M4A, OGG, FLAC, AAC` },
         { status: 400 }
       )
     }
